@@ -1,6 +1,7 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 var Airtable = require('airtable');
-var base = new Airtable({apiKey: 'keyx4Y6k1k7YSNgiD'}).base('appN4cpWc7TV3YYd1');
+var mykey = config.MY_KEY;
+var base = new Airtable({apiKey: mykey}).base('appN4cpWc7TV3YYd1');
 
 function getWord () {
   base('Table 1').select({
@@ -36,7 +37,6 @@ function showRandomMarquee() {
     .html(function () {
       allWords.forEach(function(idx){
         var fontChoice = randomizeFont();
-        console.log(fontChoice)
         wordMarkup.push('<li class="' + fontChoice + '">' + idx + '</li>')
       })
       var wordString = wordMarkup.join('');
