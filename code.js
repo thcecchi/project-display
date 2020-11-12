@@ -1,4 +1,5 @@
 var Airtable = require('airtable');
+var config = require('./config');
 var mykey = config.MY_KEY;
 var base = new Airtable({apiKey: mykey}).base('appN4cpWc7TV3YYd1');
 
