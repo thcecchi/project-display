@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'Gangster Grotesk';
+    src: url("./GangsterGrotesk-Light.otf") format("opentype");
+    /* font-weight: 100; */
+}
+
+@font-face {
+    font-family: 'PPWoodland';
+    src: url("./PPWoodland-Ultralight.otf") format("opentype");
+    /* font-weight: 100; */
+}
+
+@font-face {
+    font-family: 'NeueMetana';
+    src: url("./NeueMetana-Regular.otf") format("opentype");
+    /* font-weight: 100; */
+}
+
+@font-face {
+    font-family: 'NevradaNeue';
+    src: url("./NevradaNeue.otf") format("opentype");
+    /* font-weight: 100; */
+}
+
+html {
+  background: rgba(0,0,0,1);
+  height: 100%;
+} */
+
+body {
+  display: flex;
+  height: 100%;
+}
+
+.marquee {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  color: #ffffff;
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: -144px;
+  padding-bottom: 144px;
+  font-size: 144px;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.marquee li {
+  margin-top: 80px;
+}
+
+.Gangster {
+  font-family: "Gangster Grotesk", sans-serif;
+  letter-spacing: 1px;
+}
+
+.PPWoodland {
+  font-family: "PPWoodland-Ultralight", serif;
+  letter-spacing: 1px;
+  font-size: 120px;
+}
+
+.NeueMetana {
+  font-family: "NeueMetana", sans-serif;
+  letter-spacing: 1px;
+  font-size: 90px;
+}
+
+.NevradaNeue {
+  font-family: "NevradaNeue", serif;
+  letter-spacing: 1px;
+  font-weight: 100;
+}
