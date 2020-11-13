@@ -3,18 +3,16 @@ var config = require('./config');
 var mykey = config.MY_KEY;
 var base = new Airtable({apiKey: mykey}).base('appN4cpWc7TV3YYd1');
 
+////////////////////////////
+//  Marquee  //////////////
+//////////////////////////
+
 function getWord () {
   base('Table 1').select({
       view: 'Grid view'
   }).firstPage(function(err, records) {
       if (err) { console.error(err); return; }
-      // SINGLE
-      // const idx = records.length-1
-      // const word = records[idx].fields.Word
-      // $('#word').text(word);
 
-      // STACKED
-      const listLength = records.length
       if (allWords.length == 0) {
         for (i = allWords.length; i < records.length; i++) {
           allWords.push(records[i].fields.Word);
@@ -56,13 +54,86 @@ function randomizeFont() {
 }
 
 
-  // Single
-  // getWord()
 
-  //STACKED
+//  START  //////////////////
+var version = false;
+
+if (version==true) {
   allWords = []
   getWord()
-  //
+
   setInterval(function(){
     getWord()
   }, 3000);
+}
+
+if (version==false) {
+  allRecords = []
+  grabLatest();
+  setInterval(function(){
+    grabLatest()
+  }, 3000);
+
+  $('.marquee').addClass('bubbles');
+}
+////////////////////////////
+
+
+
+
+////////////////////////////
+//  Bubbles  //////////////
+//////////////////////////
+
+function grabLatest () {
+  base('Table 1').select({
+      view: 'Grid view'
+  }).firstPage(function(err, records) {
+      if (err) { console.error(err); return; }
+
+      if (allRecords.length == 0) {
+        for (i = allRecords.length; i < records.length; i++) {
+          allRecords.push(records[i].fields.Word);
+        }
+        addRecords(allRecords);
+      } else if (records.length > allRecords.length) {
+          const newRecords = [];
+          for (i = allRecords.length; i < records.length; i++) {
+            newRecords.push(records[i].fields.Word);
+            allRecords.push(records[i].fields.Word);
+          }
+          addNewRecords(newRecords);
+      }
+  });
+}
+
+function addRecords (records) {
+  records.forEach(function(word) {
+    $('.marquee').append('<li>' + word + '</li>');
+  })
+  findScroll();
+  initiateSmoothScroll();
+}
+
+function addNewRecords (records) {
+  var time = 1000;
+  records.forEach(function(word) {
+    setTimeout( function(){
+      var html = ('<li>' + word + '</li>');
+      $(html).hide().appendTo('.marquee').fadeIn(800)
+      findScroll();
+    }, time)
+      time += 1000;
+  })
+}
+
+function findScroll () {
+  var scrollToHeight = $(".marquee").height();
+  if(scrollToHeight > $(window).height()) {
+    $(window).scrollTop(scrollToHeight);
+  }
+}
+
+function initiateSmoothScroll () {
+$('html').css("scroll-behavior","smooth");
+}

@@ -24,12 +24,17 @@
 
 html {
   background: rgba(0,0,0,1);
-  height: 100%;
-} */
+}
 
 body {
   display: flex;
   height: 100%;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .marquee {
@@ -38,7 +43,8 @@ body {
   width: 100vw;
   text-align: center;
   color: #ffffff;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   margin-top: -144px;
   padding-bottom: 144px;
@@ -49,9 +55,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.marquee.bubbles {
+  overflow: scroll;
+  height: auto;
+  margin-top: 0;
+  padding-bottom: 80px;
+}
+
 .marquee li {
   margin-top: 80px;
+  list-style-type: none;
 }
+
 
 .Gangster {
   font-family: "Gangster Grotesk", sans-serif;
@@ -74,4 +89,10 @@ body {
   font-family: "NevradaNeue", serif;
   letter-spacing: 1px;
   font-weight: 100;
+}
+
+@media only screen and (max-width: 480px) {
+  .marquee {
+    font-size: 50px;
+  }
 }
