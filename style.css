@@ -46,9 +46,9 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  margin-top: -144px;
-  padding-bottom: 144px;
-  font-size: 144px;
+  margin-top: -120px;
+  padding-bottom: 120px;
+  font-size: 120px;
   font-weight: bold;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -60,13 +60,13 @@ body::-webkit-scrollbar {
   height: auto;
   margin-top: 0;
   padding-bottom: 80px;
+  font-size: 120px;
 }
 
 .marquee li {
   margin-top: 80px;
   list-style-type: none;
 }
-
 
 .Gangster {
   font-family: "Gangster Grotesk", sans-serif;

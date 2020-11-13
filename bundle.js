@@ -110,7 +110,8 @@ function grabLatest () {
 
 function addRecords (records) {
   records.forEach(function(word) {
-    $('.marquee').append('<li>' + word + '</li>');
+    var fontChoice = randomizeFont();
+    $('.marquee').append('<li class="' + fontChoice + '">' + word + '</li>');
   })
   findScroll();
   initiateSmoothScroll();
@@ -120,8 +121,10 @@ function addNewRecords (records) {
   var time = 1000;
   records.forEach(function(word) {
     setTimeout( function(){
-      var html = ('<li>' + word + '</li>');
-      $(html).hide().appendTo('.marquee').fadeIn(800)
+      var fontChoice = randomizeFont();
+      var html = ('<li class="' + fontChoice + '">' + word + '</li>');
+      // $(html).hide().appendTo('.marquee').fadeIn(800);
+      $(html).appendTo('.marquee');
       findScroll();
     }, time)
       time += 1000;
