@@ -34,8 +34,8 @@ function showRandomMarquee() {
     .marquee('destroy')
     .html(function () {
       allWords.forEach(function(idx){
-        var fontChoice = randomizeFont();
-        wordMarkup.push('<li class="' + fontChoice + '">' + idx + '</li>')
+        // var fontChoice = randomizeFont();
+        wordMarkup.push('<li class="' + 'Gangster' + '">' + idx + '</li>')
       })
       var wordString = wordMarkup.join('');
       return '<ul>' + wordString + '</ul>'
