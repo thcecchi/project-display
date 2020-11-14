@@ -55,6 +55,11 @@ body::-webkit-scrollbar {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.marquee ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .marquee.bubbles {
   overflow: scroll;
   height: auto;
