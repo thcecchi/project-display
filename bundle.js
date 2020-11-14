@@ -16,16 +16,37 @@ function getWord () {
 
       if (allWords.length == 0) {
         for (i = allWords.length; i < records.length; i++) {
-          allWords.push(records[i].fields.Word);
+          allWords.push({
+            word: records[i].fields.Word,
+            id: records[i].id
+          })
+            // records[i].fields.Word);
         }
         showRandomMarquee()
       } else if (records.length > allWords.length) {
           for (i = allWords.length; i < records.length; i++) {
-            allWords.push(records[i].fields.Word);
+            allWords.push({
+              word: records[i].fields.Word,
+              id: records[i].id
+            })
+            // allWords.push(records[i].fields.Word);
           }
       }
   });
 }
+
+function deleteRecords () {
+  allWords.forEach(function(idx){
+    base('Table 1').destroy([idx.id],function(err, deletedRecords) {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
+  });
+  allWords = [];
+  console.log(allWords)
+};
 
 var $mq = $('.marquee');
 
@@ -36,13 +57,13 @@ function showRandomMarquee() {
     .html(function () {
       allWords.forEach(function(idx){
         // var fontChoice = randomizeFont();
-        wordMarkup.push('<li class="' + 'Gangster' + '">' + idx + '</li>')
+        wordMarkup.push('<li class="' + 'Gangster' + '">' + idx.word + '</li>')
       })
       var wordString = wordMarkup.join('');
       return '<ul>' + wordString + '</ul>'
     })
   $mq
-    .marquee({duration: 7000, direction:'up', delayBeforeStart: 0});
+    .marquee({duration: 5000, direction:'up', delayBeforeStart: 0});
 
   $mq.on('finished', showRandomMarquee);
 }
@@ -66,6 +87,9 @@ if (version==true) {
   setInterval(function(){
     getWord()
   }, 3000);
+  $( ".deleteBtn" ).click(function() {
+    deleteRecords();
+  });
 }
 
 if (version==false) {
