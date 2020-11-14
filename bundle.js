@@ -57,7 +57,7 @@ function randomizeFont() {
 
 
 //  START  //////////////////
-var version = false;
+var version = true;
 
 if (version==true) {
   allWords = []
