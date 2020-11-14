@@ -69,8 +69,12 @@ body::-webkit-scrollbar {
 }
 
 .marquee li {
-  margin-top: 80px;
+  margin-top: 64px;
   list-style-type: none;
+}
+
+.marquee li:first-child {
+  margin-top: 0px;
 }
 
 .Gangster {

@@ -42,7 +42,7 @@ function showRandomMarquee() {
       return '<ul>' + wordString + '</ul>'
     })
   $mq
-    .marquee({duration: 5000, direction:'up', delayBeforeStart: 0});
+    .marquee({duration: 7000, direction:'up', delayBeforeStart: 0});
 
   $mq.on('finished', showRandomMarquee);
 }
