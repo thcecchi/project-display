@@ -101,6 +101,7 @@ body::-webkit-scrollbar {
 }
 
 .deleteBtn {
+  z-index: 100;
   cursor: pointer;
   position: absolute;
   top: 0;
